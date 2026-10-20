@@ -7,5 +7,6 @@ def f1(a):
     if a:
         a.insert(0, a.pop())
     return a
-print(f([1, 2, 3, 4, 5]))
-print (f1([1, 2, 3, 4, 5]))
+a = input("Введите элементы:")
+print(f(a.split()))
+print (f1(a.split()))
