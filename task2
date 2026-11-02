@@ -1,1 +1,25 @@
+def permute(nums):
+    result = []
+    nums = sorted(nums)
 
+    def backtrack(current_perm, used):
+        if len(current_perm) == len(nums):
+            result.append(current_perm[:])
+            return
+        for i in range(len(nums)):
+            if used[i]:
+                continue
+            if i > 0 and nums[i] == nums[i - 1] and not used[i - 1]:
+                continue
+            used[i] = True
+            current_perm.append(nums[i])
+            backtrack(current_perm, used)
+            current_perm.pop()
+            used[i] = False
+    backtrack([], [False] * len(nums))
+    return result
+print(permute([1, 2, 3]))
+print(permute([10, -5, 10]))
+print(permute([1, 1, 1]))
+print(permute([0]))
+print(permute([]))
